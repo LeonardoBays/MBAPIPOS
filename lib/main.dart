@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'app.dart';
+import 'env.dart';
 import 'injector.dart';
 
 void main() async {
   final Injector injector = await _initializeApp();
+
+  await Supabase.initialize(
+    url: Env.url,
+    anonKey: Env.anonKey,
+  );
 
   runApp(MBAPIApp(injector: injector));
 }
