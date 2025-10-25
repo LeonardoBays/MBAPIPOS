@@ -16,4 +16,17 @@ class SupaRepositoryImpl extends SupaDataSource implements SupaRepository {
       password: password,
     );
   }
+
+  @override
+  Future<void> logout() async {
+    await client.auth.signOut();
+  }
+
+  @override
+  Future<AuthResponse> sighup({
+    required String email,
+    required String password,
+  }) async {
+    return await client.auth.signUp(email: email, password: password);
+  }
 }

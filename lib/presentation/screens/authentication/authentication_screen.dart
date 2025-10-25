@@ -7,6 +7,7 @@ import 'package:mbapipos/presentation/screens/login/login_screen.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../../config/routes.dart';
+import '../home/bloc/home_bloc.dart';
 import 'bloc/authentication_bloc.dart';
 
 class AuthenticationScreen extends StatefulWidget {
@@ -14,10 +15,12 @@ class AuthenticationScreen extends StatefulWidget {
     super.key,
     required this.authenticationBloc,
     required this.loginBloc,
+    required this.homeBloc,
   });
 
   final AuthenticationBloc authenticationBloc;
   final LoginBloc loginBloc;
+  final HomeBloc homeBloc;
 
   @override
   State<AuthenticationScreen> createState() => _AuthenticationScreenState();
@@ -26,27 +29,15 @@ class AuthenticationScreen extends StatefulWidget {
 class _AuthenticationScreenState extends State<AuthenticationScreen> {
   late final AuthenticationBloc _authenticationBloc;
   late final LoginBloc _loginBloc;
+  late final HomeBloc _homeBloc;
 
   @override
   void initState() {
     _authenticationBloc = widget.authenticationBloc;
     _loginBloc = widget.loginBloc;
-    Supabase.instance.client.auth.onAuthStateChange.listen((data) {
-      final AuthChangeEvent event = data.event;
-      final Session? session = data.session;
-      if (event == AuthChangeEvent.initialSession ||
-          event == AuthChangeEvent.signedIn) {
-        if (session != null) {
-          _authenticationBloc.add(
-            const AuthenticationStatusChange(AuthStatus.authenticated),
-          );
-        } else {
-          _authenticationBloc.add(
-            const AuthenticationStatusChange(AuthStatus.unauthenticated),
-          );
-        }
-      }
-    });
+    _homeBloc = widget.homeBloc;
+
+    _authenticationListener();
     super.initState();
   }
 
@@ -61,7 +52,7 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
           AuthStatus.authenticating => Center(
             child: CircularProgressIndicator(),
           ),
-          AuthStatus.authenticated => HomeScreen(),
+          AuthStatus.authenticated => HomeScreen(homeBloc: _homeBloc),
         };
       },
     );
@@ -79,5 +70,32 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
         ).popUntil(ModalRoute.withName(AppRoutes.root.route));
       }
     }
+  }
+
+  void _authenticationListener() {
+    Supabase.instance.client.auth.onAuthStateChange.listen((data) {
+      final AuthChangeEvent event = data.event;
+      final Session? session = data.session;
+
+      switch (event) {
+        case AuthChangeEvent.initialSession:
+        case AuthChangeEvent.signedIn:
+          if (session != null) {
+            _authenticationBloc.add(
+              const AuthenticationStatusChange(AuthStatus.authenticated),
+            );
+          } else {
+            _authenticationBloc.add(
+              const AuthenticationStatusChange(AuthStatus.unauthenticated),
+            );
+          }
+        case AuthChangeEvent.signedOut:
+          _authenticationBloc.add(
+            const AuthenticationStatusChange(AuthStatus.unauthenticated),
+          );
+        case _:
+          break;
+      }
+    });
   }
 }

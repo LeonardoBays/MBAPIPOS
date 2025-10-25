@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:mbapipos/presentation/screens/authentication/bloc/authentication_bloc.dart';
+import 'package:mbapipos/presentation/screens/home/bloc/home_bloc.dart';
 import 'package:mbapipos/presentation/screens/login/bloc/login_bloc.dart';
 
 import '../injector.dart';
 import '../presentation/components/animation/modal_page_route.dart';
 import '../presentation/screens/authentication/authentication_screen.dart';
+import '../presentation/screens/register/bloc/register_bloc.dart';
 import '../presentation/screens/register/register_screen.dart';
 
 enum NavigationFlow { simple, modalBottomUp }
@@ -34,8 +36,11 @@ class Routes {
       AppRoutes.root => AuthenticationScreen(
         authenticationBloc: injector.getIt.get<AuthenticationBloc>(),
         loginBloc: injector.getIt.get<LoginBloc>(),
+        homeBloc: injector.getIt.get<HomeBloc>(),
       ),
-      AppRoutes.register => RegisterScreen(),
+      AppRoutes.register => RegisterScreen(
+        registerBloc: injector.getIt.get<RegisterBloc>(),
+      ),
     };
 
     return switch (appRoute.flow) {

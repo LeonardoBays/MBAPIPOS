@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
@@ -56,7 +55,7 @@ class ApplicationDatabaseImpl implements ApplicationDatabase {
           await db.execute(sql);
         }
       }
-    } catch(e) {
+    } catch (e) {
       log("CATCH _ONCREATE DATABASE: $e");
     }
   }

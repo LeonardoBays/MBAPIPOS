@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mbapipos/presentation/screens/login/widgets/login_input_type.dart';
 
-import '../../../components/login_input.dart';
+import '../../../components/input.dart';
 import '../bloc/login_bloc.dart';
 import 'login_button.dart';
 
@@ -79,7 +79,7 @@ class _LoginFormState extends State<LoginForm> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         LoginInputType(label: 'Email'),
-        LoginInput(
+        Input(
           hint: "Digite seu email",
           isEnabled: _isEnable,
           isVisible: true,
@@ -92,7 +92,7 @@ class _LoginFormState extends State<LoginForm> {
         ),
         SizedBox(height: 32.0),
         LoginInputType(label: 'Senha'),
-        LoginInput(
+        Input(
           hint: "Digite sua senha",
           isEnabled: _isEnable,
           isVisible: _isVisible,
