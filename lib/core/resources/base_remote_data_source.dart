@@ -14,199 +14,199 @@ abstract class BaseRemoteDataSource<T> {
     _httpClient = httpClient;
   }
 
-  Future<T> get({
-    required String path,
-    Map<String, String>? customHeader,
-    ResponseType responseType = ResponseType.plain,
-    required HttpResponse<T> response,
-    required String titleMessage,
-  }) async {
-    try {
-      final Response res = await _httpClient.client.get(
-        path,
-        options: Options(
-          headers: customHeader,
-          responseType: responseType,
-        ),
-      );
-      return response(res);
-    } on HttpRequestException catch (e, stt) {
-      _printErrorLog(e, stt);
-      rethrow;
-    } on DioException catch (e, stt) {
-      _printErrorLog(e, stt);
-
-      final String errorMessage = requestErrorTitle(
-        titleMessage,
-        e.requestOptions,
-      );
-
-      throw HttpRequestException(
-        response: dioError(e, errorMessage),
-        infoMessage: e.toString(),
-        titleMessage: errorMessage,
-      );
-    } catch (e, stt) {
-      _printErrorLog(e, stt);
-      throw HttpRequestException(
-        infoMessage: e.toString(),
-        titleMessage: titleMessage,
-      );
-    }
-  }
-
-  Future<T> post({
-    required String path,
-    dynamic body,
-    Map<String, String>? customHeader,
-    required HttpResponse<T> response,
-    required String titleMessage,
-    ResponseType responseType = ResponseType.plain,
-  }) async {
-    try {
-      final res = await _httpClient.client.post(
-        path,
-        data: body,
-        options: Options(headers: customHeader, responseType: responseType),
-      );
-
-      return response(res);
-    } on HttpRequestException catch (e, stt) {
-      _printErrorLog(e, stt);
-      rethrow;
-    } on DioException catch (e, stt) {
-      _printErrorLog(e, stt);
-      final String errorMessage = requestErrorTitle(
-        titleMessage,
-        e.requestOptions,
-      );
-      throw HttpRequestException(
-        response: dioError(e, errorMessage),
-        infoMessage: e.toString(),
-        titleMessage: errorMessage,
-      );
-    } catch (e, stt) {
-      _printErrorLog(e, stt);
-      throw HttpRequestException(
-        infoMessage: e.toString(),
-        titleMessage: titleMessage,
-      );
-    }
-  }
-
-  Future<T> patch({
-    required String path,
-    dynamic body,
-    Map<String, String>? customHeader,
-    required HttpResponse<T> response,
-    required String titleMessage,
-  }) async {
-    try {
-      final res = await _httpClient.client.patch(
-        path,
-        data: body,
-        options: Options(headers: customHeader),
-      );
-
-      return response(res);
-    } on HttpRequestException catch (e, stt) {
-      _printErrorLog(e, stt);
-      rethrow;
-    } on DioException catch (e, stt) {
-      _printErrorLog(e, stt);
-      final String errorMessage = requestErrorTitle(
-        titleMessage,
-        e.requestOptions,
-      );
-      throw HttpRequestException(
-        response: dioError(e, errorMessage),
-        infoMessage: e.toString(),
-        titleMessage: titleMessage,
-      );
-    } catch (e, stt) {
-      _printErrorLog(e, stt);
-      throw HttpRequestException(
-        infoMessage: e.toString(),
-        titleMessage: titleMessage,
-      );
-    }
-  }
-
-  Future<T> put({
-    required String path,
-    dynamic body,
-    Map<String, String>? customHeader,
-    required HttpResponse<T> response,
-    required String titleMessage,
-  }) async {
-    try {
-      final res = await _httpClient.client.put(
-        path,
-        data: body,
-        options: Options(headers: customHeader),
-      );
-
-      return response(res);
-    } on HttpRequestException catch (e, stt) {
-      _printErrorLog(e, stt);
-      rethrow;
-    } on DioException catch (e, stt) {
-      _printErrorLog(e, stt);
-      final String errorMessage = requestErrorTitle(
-        titleMessage,
-        e.requestOptions,
-      );
-      throw HttpRequestException(
-        response: dioError(e, errorMessage),
-        infoMessage: e.toString(),
-        titleMessage: titleMessage,
-      );
-    } catch (e, stt) {
-      _printErrorLog(e, stt);
-      throw HttpRequestException(
-        infoMessage: e.toString(),
-        titleMessage: titleMessage,
-      );
-    }
-  }
-
-  Future<T> delete({
-    required String path,
-    dynamic body,
-    Map<String, String>? customHeader,
-    required HttpResponse<T> response,
-    required String titleMessage,
-  }) async {
-    try {
-      final res = await _httpClient.client.delete(
-        path,
-        data: body,
-        options: Options(headers: customHeader),
-      );
-
-      return response(res);
-    } on HttpRequestException catch (e, stt) {
-      _printErrorLog(e, stt);
-      rethrow;
-    } on DioException catch (e, stt) {
-      _printErrorLog(e, stt);
-      final String errorMessage = requestErrorTitle(
-        titleMessage,
-        e.requestOptions,
-      );
-      throw HttpRequestException(
-        response: dioError(e, errorMessage),
-        infoMessage: e.toString(),
-        titleMessage: titleMessage,
-      );
-    } catch (e, stt) {
-      _printErrorLog(e, stt);
-      throw HttpRequestException(
-        infoMessage: e.toString(),
-        titleMessage: titleMessage,
-      );
-    }
-  }
+  // Future<T> get({
+  //   required String path,
+  //   Map<String, String>? customHeader,
+  //   ResponseType responseType = ResponseType.plain,
+  //   required HttpResponse<T> response,
+  //   required String titleMessage,
+  // }) async {
+  //   try {
+  //     final Response res = await _httpClient.client.get(
+  //       path,
+  //       options: Options(
+  //         headers: customHeader,
+  //         responseType: responseType,
+  //       ),
+  //     );
+  //     return response(res);
+  //   } on HttpRequestException catch (e, stt) {
+  //     _printErrorLog(e, stt);
+  //     rethrow;
+  //   } on DioException catch (e, stt) {
+  //     _printErrorLog(e, stt);
+  //
+  //     final String errorMessage = requestErrorTitle(
+  //       titleMessage,
+  //       e.requestOptions,
+  //     );
+  //
+  //     throw HttpRequestException(
+  //       response: dioError(e, errorMessage),
+  //       infoMessage: e.toString(),
+  //       titleMessage: errorMessage,
+  //     );
+  //   } catch (e, stt) {
+  //     _printErrorLog(e, stt);
+  //     throw HttpRequestException(
+  //       infoMessage: e.toString(),
+  //       titleMessage: titleMessage,
+  //     );
+  //   }
+  // }
+  //
+  // Future<T> post({
+  //   required String path,
+  //   dynamic body,
+  //   Map<String, String>? customHeader,
+  //   required HttpResponse<T> response,
+  //   required String titleMessage,
+  //   ResponseType responseType = ResponseType.plain,
+  // }) async {
+  //   try {
+  //     final res = await _httpClient.client.post(
+  //       path,
+  //       data: body,
+  //       options: Options(headers: customHeader, responseType: responseType),
+  //     );
+  //
+  //     return response(res);
+  //   } on HttpRequestException catch (e, stt) {
+  //     _printErrorLog(e, stt);
+  //     rethrow;
+  //   } on DioException catch (e, stt) {
+  //     _printErrorLog(e, stt);
+  //     final String errorMessage = requestErrorTitle(
+  //       titleMessage,
+  //       e.requestOptions,
+  //     );
+  //     throw HttpRequestException(
+  //       response: dioError(e, errorMessage),
+  //       infoMessage: e.toString(),
+  //       titleMessage: errorMessage,
+  //     );
+  //   } catch (e, stt) {
+  //     _printErrorLog(e, stt);
+  //     throw HttpRequestException(
+  //       infoMessage: e.toString(),
+  //       titleMessage: titleMessage,
+  //     );
+  //   }
+  // }
+  //
+  // Future<T> patch({
+  //   required String path,
+  //   dynamic body,
+  //   Map<String, String>? customHeader,
+  //   required HttpResponse<T> response,
+  //   required String titleMessage,
+  // }) async {
+  //   try {
+  //     final res = await _httpClient.client.patch(
+  //       path,
+  //       data: body,
+  //       options: Options(headers: customHeader),
+  //     );
+  //
+  //     return response(res);
+  //   } on HttpRequestException catch (e, stt) {
+  //     _printErrorLog(e, stt);
+  //     rethrow;
+  //   } on DioException catch (e, stt) {
+  //     _printErrorLog(e, stt);
+  //     final String errorMessage = requestErrorTitle(
+  //       titleMessage,
+  //       e.requestOptions,
+  //     );
+  //     throw HttpRequestException(
+  //       response: dioError(e, errorMessage),
+  //       infoMessage: e.toString(),
+  //       titleMessage: titleMessage,
+  //     );
+  //   } catch (e, stt) {
+  //     _printErrorLog(e, stt);
+  //     throw HttpRequestException(
+  //       infoMessage: e.toString(),
+  //       titleMessage: titleMessage,
+  //     );
+  //   }
+  // }
+  //
+  // Future<T> put({
+  //   required String path,
+  //   dynamic body,
+  //   Map<String, String>? customHeader,
+  //   required HttpResponse<T> response,
+  //   required String titleMessage,
+  // }) async {
+  //   try {
+  //     final res = await _httpClient.client.put(
+  //       path,
+  //       data: body,
+  //       options: Options(headers: customHeader),
+  //     );
+  //
+  //     return response(res);
+  //   } on HttpRequestException catch (e, stt) {
+  //     _printErrorLog(e, stt);
+  //     rethrow;
+  //   } on DioException catch (e, stt) {
+  //     _printErrorLog(e, stt);
+  //     final String errorMessage = requestErrorTitle(
+  //       titleMessage,
+  //       e.requestOptions,
+  //     );
+  //     throw HttpRequestException(
+  //       response: dioError(e, errorMessage),
+  //       infoMessage: e.toString(),
+  //       titleMessage: titleMessage,
+  //     );
+  //   } catch (e, stt) {
+  //     _printErrorLog(e, stt);
+  //     throw HttpRequestException(
+  //       infoMessage: e.toString(),
+  //       titleMessage: titleMessage,
+  //     );
+  //   }
+  // }
+  //
+  // Future<T> delete({
+  //   required String path,
+  //   dynamic body,
+  //   Map<String, String>? customHeader,
+  //   required HttpResponse<T> response,
+  //   required String titleMessage,
+  // }) async {
+  //   try {
+  //     final res = await _httpClient.client.delete(
+  //       path,
+  //       data: body,
+  //       options: Options(headers: customHeader),
+  //     );
+  //
+  //     return response(res);
+  //   } on HttpRequestException catch (e, stt) {
+  //     _printErrorLog(e, stt);
+  //     rethrow;
+  //   } on DioException catch (e, stt) {
+  //     _printErrorLog(e, stt);
+  //     final String errorMessage = requestErrorTitle(
+  //       titleMessage,
+  //       e.requestOptions,
+  //     );
+  //     throw HttpRequestException(
+  //       response: dioError(e, errorMessage),
+  //       infoMessage: e.toString(),
+  //       titleMessage: titleMessage,
+  //     );
+  //   } catch (e, stt) {
+  //     _printErrorLog(e, stt);
+  //     throw HttpRequestException(
+  //       infoMessage: e.toString(),
+  //       titleMessage: titleMessage,
+  //     );
+  //   }
+  // }
 
   void _printErrorLog(Object? exception, StackTrace stackTrace) {
     if (kDebugMode) {

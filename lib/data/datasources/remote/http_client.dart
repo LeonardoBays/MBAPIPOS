@@ -1,10 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../models/api_error_model.dart';
 
 abstract class HttpClient {
-  late final Dio client;
+  final SupabaseClient client;
+
+  const HttpClient(this.client);
 }
 
 class HttpRequestException implements Exception {

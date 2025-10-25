@@ -10,11 +10,6 @@ import 'injector.dart';
 void main() async {
   final Injector injector = await _initializeApp();
 
-  await Supabase.initialize(
-    url: Env.url,
-    anonKey: Env.anonKey,
-  );
-
   runApp(MBAPIApp(injector: injector));
 }
 
