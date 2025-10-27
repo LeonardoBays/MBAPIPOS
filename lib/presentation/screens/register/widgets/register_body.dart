@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mbapipos/presentation/screens/register/widgets/register_form.dart';
-import 'package:mbapipos/presentation/screens/register/widgets/register_title.dart';
 
 import '../bloc/register_bloc.dart';
 

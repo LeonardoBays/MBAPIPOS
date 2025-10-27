@@ -4,6 +4,7 @@ class Input extends StatelessWidget {
   const Input({
     super.key,
     this.error,
+    required this.label,
     required this.hint,
     required this.isEnabled,
     required this.isVisible,
@@ -15,6 +16,7 @@ class Input extends StatelessWidget {
     this.suffixIcon,
   });
 
+  final String label;
   final String hint;
   final String? error;
   final bool isEnabled;
@@ -39,8 +41,7 @@ class Input extends StatelessWidget {
       style: TextStyle(color: Colors.black, fontSize: 16.0),
       cursorColor: Colors.black,
       decoration: InputDecoration(
-        // contentPadding: EdgeInsets.only(top: 8.0),
-        // isDense: true,
+        labelText: label,
         hintText: hint,
         hintStyle: const TextStyle(fontSize: 14.0, color: Colors.grey),
         suffixIcon: suffixIcon,

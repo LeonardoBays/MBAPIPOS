@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../components/input.dart';
 import '../bloc/register_bloc.dart';
 import 'register_button.dart';
-import 'register_input_type.dart';
 
 class RegisterForm extends StatefulWidget {
   const RegisterForm({
@@ -94,8 +93,8 @@ class _RegisterFormState extends State<RegisterForm> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        RegisterInputType(label: 'Email'),
         Input(
+          label: "Email",
           hint: "Digite seu email",
           isEnabled: _isEnable,
           isVisible: true,
@@ -106,9 +105,9 @@ class _RegisterFormState extends State<RegisterForm> {
           error: _emailError,
           focus: _emailFocus,
         ),
-        SizedBox(height: 32.0),
-        RegisterInputType(label: 'Senha'),
+        SizedBox(height: 16.0),
         Input(
+          label: "Senha",
           hint: "Digite sua senha",
           isEnabled: _isEnable,
           isVisible: _isPasswordVisible,
@@ -125,9 +124,9 @@ class _RegisterFormState extends State<RegisterForm> {
             ),
           ),
         ),
-        SizedBox(height: 32.0),
-        RegisterInputType(label: 'Confirmação de Senha'),
+        SizedBox(height: 16.0),
         Input(
+          label: "Confirmação de senha",
           hint: "Confirme sua senha",
           isEnabled: _isEnable,
           isVisible: _isConfirmPasswordVisible,

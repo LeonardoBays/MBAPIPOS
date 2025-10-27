@@ -4,12 +4,10 @@ import 'package:mbapipos/presentation/screens/home/bloc/home_bloc.dart';
 import 'package:mbapipos/presentation/screens/login/bloc/login_bloc.dart';
 import 'package:mbapipos/presentation/screens/register/bloc/register_bloc.dart';
 
-import 'data/datasources/local/app_database.dart';
 import 'data/datasources/local/shared_data.dart';
 import 'data/datasources/remote/supa_client.dart';
 import 'data/repositories/remote/supa_repository_impl.dart';
 import 'domain/repositories/remote/supa_repository.dart';
-import 'external/datasources/local/app_database_impl.dart';
 import 'external/datasources/local/shared_data_impl.dart';
 import 'external/datasources/remote/supa_client_impl.dart';
 import 'presentation/screens/authentication/bloc/authentication_bloc.dart';
@@ -34,10 +32,6 @@ final class InjectorImpl extends Injector {
     await SupaImpl().initialize();
 
     /// Database----------------------------------------------------------------
-    getIt.registerSingletonAsync<ApplicationDatabase>(
-      ApplicationDatabaseImpl.initialize,
-    );
-
     getIt.registerSingletonAsync<SharedData>(SharedDataImpl.initialize);
 
     /// API Client--------------------------------------------------------------
@@ -46,11 +40,6 @@ final class InjectorImpl extends Injector {
     /// Preferences Repository--------------------------------------------------
 
     /// Local Repository--------------------------------------------------------
-    // getIt.registerSingleton<UsuAuthLocalRepository>(
-    //   UsuAuthLocalRepositoryImpl(
-    //     await getIt.getAsync<ApplicationDatabase>(),
-    //   ),
-    // );
 
     /// Supabase Repository-------------------------------------------------------
     getIt.registerSingleton<SupaRepository>(

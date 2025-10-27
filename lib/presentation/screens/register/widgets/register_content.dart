@@ -11,7 +11,7 @@ class RegisterContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Sign Up'), backgroundColor: Colors.white),
+      appBar: AppBar(title: Text('Sign Up')),
       backgroundColor: Colors.white,
       body: SafeArea(
         child: BlocConsumer<RegisterBloc, RegisterState>(

@@ -4,13 +4,6 @@ sealed class AuthenticationEvent extends Equatable {
   const AuthenticationEvent();
 }
 
-final class AuthenticationLoad extends AuthenticationEvent {
-  const AuthenticationLoad();
-
-  @override
-  List<Object> get props => [];
-}
-
 final class AuthenticationRefresh extends AuthenticationEvent {
   const AuthenticationRefresh();
 

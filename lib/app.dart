@@ -4,6 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 // import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'config/routes.dart';
+import 'config/theme.dart';
 import 'injector.dart';
 
 class MBAPIApp extends StatelessWidget {
@@ -16,6 +17,7 @@ class MBAPIApp extends StatelessWidget {
     return MaterialApp(
       title: 'MBAPI',
       debugShowCheckedModeBanner: false,
+      theme: getDetailedLightThemeGreen(),
       supportedLocales: const [Locale('pt', 'BR')],
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
