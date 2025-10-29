@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mbapipos/core/util/extensions/context_extension.dart';
-import 'package:mbapipos/presentation/screens/login/widgets/login_body.dart';
 
+import '../../../../core/util/extensions/context_extension.dart';
 import '../bloc/login_bloc.dart';
+import 'login_body.dart';
 
 class LoginContent extends StatelessWidget {
   const LoginContent({super.key});

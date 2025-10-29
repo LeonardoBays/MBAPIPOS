@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mbapipos/core/util/extensions/context_extension.dart';
-import 'package:mbapipos/presentation/screens/register/widgets/register_body.dart';
 
+import '../../../../core/util/extensions/context_extension.dart';
 import '../bloc/register_bloc.dart';
+import 'register_body.dart';
 
 class RegisterContent extends StatelessWidget {
   const RegisterContent({super.key});
@@ -11,7 +11,7 @@ class RegisterContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Sign Up')),
+      appBar: AppBar(title: const Text('Sign Up')),
       backgroundColor: Colors.white,
       body: SafeArea(
         child: BlocConsumer<RegisterBloc, RegisterState>(

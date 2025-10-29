@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mbapipos/config/routes.dart';
+
+import '../../../../config/routes.dart';
 
 class LoginRegister extends StatelessWidget {
   const LoginRegister({super.key});
@@ -13,9 +14,12 @@ class LoginRegister extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
           child: RichText(
-            text: TextSpan(
+            text: const TextSpan(
               text: 'Não tem uma conta?',
-              style: TextStyle(color: Colors.black, fontWeight: FontWeight.w500),
+              style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.w500,
+              ),
               children: [
                 TextSpan(text: ' '),
                 TextSpan(text: 'Cadastre-se agora!'),

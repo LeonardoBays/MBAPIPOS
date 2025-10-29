@@ -89,7 +89,7 @@ class _LoginFormState extends State<LoginForm> {
           error: _emailError,
           focus: _emailFocus,
         ),
-        SizedBox(height: 16.0),
+        const SizedBox(height: 16.0),
         Input(
           label: "Senha",
           hint: "Digite sua senha",
@@ -106,7 +106,7 @@ class _LoginFormState extends State<LoginForm> {
             icon: Icon(!_isVisible ? Icons.visibility : Icons.visibility_off),
           ),
         ),
-        SizedBox(height: 32.0),
+        const SizedBox(height: 32.0),
         LoginButton(
           isEnable: _isEnable,
           isLoading: _isLoading,
@@ -140,6 +140,6 @@ class _LoginFormState extends State<LoginForm> {
       return;
     }
 
-    context.read<LoginBloc>().add(LoginTogglePassword());
+    context.read<LoginBloc>().add(const LoginTogglePassword());
   }
 }

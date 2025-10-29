@@ -15,9 +15,9 @@ class MBAPIApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'MBAPI',
+      title: "Gol Not Found",
       debugShowCheckedModeBanner: false,
-      theme: getDetailedLightThemeGreen(),
+      theme: theme(),
       supportedLocales: const [Locale('pt', 'BR')],
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,

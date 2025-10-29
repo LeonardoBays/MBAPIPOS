@@ -19,12 +19,15 @@ class LoginButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         child: isLoading
-            ? SizedBox(
+            ? const SizedBox(
                 height: 16.0,
                 width: 16.0,
                 child: CircularProgressIndicator(strokeWidth: 2.5),
               )
-            : Text('Sign In', style: TextStyle(fontWeight: FontWeight.w600)),
+            : const Text(
+                'Sign In',
+                style: TextStyle(fontWeight: FontWeight.w600),
+              ),
       ),
     );
   }

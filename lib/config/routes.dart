@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:mbapipos/presentation/screens/authentication/bloc/authentication_bloc.dart';
-import 'package:mbapipos/presentation/screens/home/bloc/home_bloc.dart';
-import 'package:mbapipos/presentation/screens/login/bloc/login_bloc.dart';
 
 import '../injector.dart';
 import '../presentation/components/animation/modal_page_route.dart';
 import '../presentation/screens/authentication/authentication_screen.dart';
+import '../presentation/screens/authentication/bloc/authentication_bloc.dart';
+import '../presentation/screens/home/bloc/home_bloc.dart';
+import '../presentation/screens/login/bloc/login_bloc.dart';
+import '../presentation/screens/players/bloc/players_bloc.dart';
+import '../presentation/screens/players/players_screen.dart';
 import '../presentation/screens/register/bloc/register_bloc.dart';
 import '../presentation/screens/register/register_screen.dart';
 
@@ -13,7 +15,12 @@ enum NavigationFlow { simple, modalBottomUp }
 
 enum AppRoutes {
   root('/', NavigationFlow.simple),
-  register('/register', NavigationFlow.simple);
+  register('/register', NavigationFlow.simple),
+  players('/players', NavigationFlow.simple),
+  managerPlayer('/manager_player', NavigationFlow.simple),
+  matches('/matches', NavigationFlow.simple),
+  managerMatch('/manager_match', NavigationFlow.simple),
+  ranking('/hiscores', NavigationFlow.simple);
 
   final String route;
   final NavigationFlow flow;
@@ -40,6 +47,21 @@ class Routes {
       ),
       AppRoutes.register => RegisterScreen(
         registerBloc: injector.getIt.get<RegisterBloc>(),
+      ),
+      AppRoutes.players => PlayersScreen(
+        playersBloc: injector.getIt.get<PlayersBloc>(),
+      ),
+      AppRoutes.managerPlayer => PlayersScreen(
+        playersBloc: injector.getIt.get<PlayersBloc>(),
+      ),
+      AppRoutes.matches => PlayersScreen(
+        playersBloc: injector.getIt.get<PlayersBloc>(),
+      ),
+      AppRoutes.managerMatch => PlayersScreen(
+        playersBloc: injector.getIt.get<PlayersBloc>(),
+      ),
+      AppRoutes.ranking => PlayersScreen(
+        playersBloc: injector.getIt.get<PlayersBloc>(),
       ),
     };
 

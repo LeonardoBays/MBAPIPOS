@@ -11,7 +11,7 @@ part 'register_event.dart';
 part 'register_state.dart';
 
 class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
-  RegisterBloc(this._supaRepository) : super(RegisterInitial()) {
+  RegisterBloc(this._supaRepository) : super(const RegisterInitial()) {
     on<RegisterSetEmail>(_onRegisterSetEmail);
     on<RegisterSetPassword>(_onRegisterSetPassword);
     on<RegisterSetConfirmPassword>(_onRegisterSetConfirmPassword);
@@ -175,7 +175,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
         return;
       }
 
-      await _supaRepository.sighup(
+      await _supaRepository.signUp(
         email: state.email.trim(),
         password: state.password.trim(),
       );
@@ -192,7 +192,6 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
           isConfirmPasswordVisible: state.isConfirmPasswordVisible,
         ),
       );
-
     } on AuthException catch (error) {
       late String message;
 

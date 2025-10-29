@@ -2,13 +2,14 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:mbapipos/domain/repositories/remote/supa_repository.dart';
+
+import '../../../../domain/repositories/remote/supa_repository.dart';
 
 part 'home_event.dart';
 part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  HomeBloc(this._supaRepository) : super(HomeInitial()) {
+  HomeBloc(this._supaRepository) : super(const HomeInitial()) {
     on<HomeLogout>(_onHomeLogout);
     on<HomeReset>(_onHomeReset);
   }

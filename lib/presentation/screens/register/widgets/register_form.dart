@@ -105,7 +105,7 @@ class _RegisterFormState extends State<RegisterForm> {
           error: _emailError,
           focus: _emailFocus,
         ),
-        SizedBox(height: 16.0),
+        const SizedBox(height: 16.0),
         Input(
           label: "Senha",
           hint: "Digite sua senha",
@@ -124,7 +124,7 @@ class _RegisterFormState extends State<RegisterForm> {
             ),
           ),
         ),
-        SizedBox(height: 16.0),
+        const SizedBox(height: 16.0),
         Input(
           label: "Confirmação de senha",
           hint: "Confirme sua senha",
@@ -145,7 +145,7 @@ class _RegisterFormState extends State<RegisterForm> {
             ),
           ),
         ),
-        SizedBox(height: 32.0),
+        const SizedBox(height: 32.0),
         RegisterButton(
           isEnable: _isEnable,
           isLoading: _isLoading,
@@ -184,7 +184,7 @@ class _RegisterFormState extends State<RegisterForm> {
       return;
     }
 
-    context.read<RegisterBloc>().add(RegisterTogglePassword());
+    context.read<RegisterBloc>().add(const RegisterTogglePassword());
   }
 
   void _onToggleConfirmPassordPressed(BuildContext context) {
@@ -192,6 +192,6 @@ class _RegisterFormState extends State<RegisterForm> {
       return;
     }
 
-    context.read<RegisterBloc>().add(RegisterToggleConfirmPassword());
+    context.read<RegisterBloc>().add(const RegisterToggleConfirmPassword());
   }
 }

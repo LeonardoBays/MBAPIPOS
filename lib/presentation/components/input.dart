@@ -38,14 +38,14 @@ class Input extends StatelessWidget {
       onFieldSubmitted: isEnabled ? (_) => onSubmitted() : null,
       textInputAction: textInputAction,
       obscureText: !isVisible,
-      style: TextStyle(color: Colors.black, fontSize: 16.0),
+      style: const TextStyle(color: Colors.black, fontSize: 16.0),
       cursorColor: Colors.black,
       decoration: InputDecoration(
         labelText: label,
         hintText: hint,
         hintStyle: const TextStyle(fontSize: 14.0, color: Colors.grey),
         suffixIcon: suffixIcon,
-        enabledBorder: UnderlineInputBorder(
+        enabledBorder: const UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.grey, width: 1.0),
         ),
         focusedBorder: UnderlineInputBorder(

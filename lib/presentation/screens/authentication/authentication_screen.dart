@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:mbapipos/presentation/screens/home/home_screen.dart';
-import 'package:mbapipos/presentation/screens/login/bloc/login_bloc.dart';
-import 'package:mbapipos/presentation/screens/login/login_screen.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../../config/routes.dart';
 import '../home/bloc/home_bloc.dart';
+import '../home/home_screen.dart';
+import '../login/bloc/login_bloc.dart';
+import '../login/login_screen.dart';
 import 'bloc/authentication_bloc.dart';
 
 class AuthenticationScreen extends StatefulWidget {
@@ -49,7 +49,7 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
       builder: (BuildContext context, AuthenticationState state) {
         return switch (state.authStatus) {
           AuthStatus.unauthenticated => LoginScreen(loginBloc: _loginBloc),
-          AuthStatus.authenticating => Center(
+          AuthStatus.authenticating => const Center(
             child: CircularProgressIndicator(),
           ),
           AuthStatus.authenticated => HomeScreen(homeBloc: _homeBloc),

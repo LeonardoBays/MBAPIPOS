@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mbapipos/presentation/screens/home/bloc/home_bloc.dart';
-import 'package:mbapipos/presentation/screens/home/widgets/home_content.dart';
+
+import 'bloc/home_bloc.dart';
+import 'widgets/home_content.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key, required this.homeBloc});

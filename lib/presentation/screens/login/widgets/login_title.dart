@@ -5,7 +5,7 @@ class LoginTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
+    return const Text(
       'Sign In',
       style: TextStyle(
         color: Colors.black,

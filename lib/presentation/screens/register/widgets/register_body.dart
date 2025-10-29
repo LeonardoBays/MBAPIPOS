@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mbapipos/presentation/screens/register/widgets/register_form.dart';
 
 import '../bloc/register_bloc.dart';
+import 'register_form.dart';
 
 class RegisterBody extends StatelessWidget {
   const RegisterBody({super.key, required this.state});
@@ -17,8 +17,7 @@ class RegisterBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          // const RegisterTitle(),
-          SizedBox(height: 48.0),
+          const SizedBox(height: 48.0),
           RegisterForm(
             emailError: state.emailError,
             passwordError: state.passwordError,

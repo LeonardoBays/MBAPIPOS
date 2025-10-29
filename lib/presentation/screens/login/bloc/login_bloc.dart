@@ -11,7 +11,7 @@ part 'login_event.dart';
 part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  LoginBloc(this._supaRepository) : super(LoginInitial()) {
+  LoginBloc(this._supaRepository) : super(const LoginInitial()) {
     on<LoginSetEmail>(_onLoginSetEmail);
     on<LoginSetPassword>(_onLoginSetPassword);
     on<LoginTogglePassword>(_onLoginTogglePassword);
@@ -144,6 +144,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   }
 
   FutureOr<void> _onLoginReset(LoginReset event, Emitter<LoginState> emit) {
-    emit(LoginInitial());
+    emit(const LoginInitial());
   }
 }

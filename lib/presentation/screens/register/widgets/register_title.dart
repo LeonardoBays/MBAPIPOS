@@ -5,7 +5,7 @@ class RegisterTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
+    return const Text(
       'Sign Up',
       style: TextStyle(
         color: Colors.black,

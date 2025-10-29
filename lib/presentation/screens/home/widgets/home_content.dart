@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mbapipos/core/util/extensions/context_extension.dart';
-import 'package:mbapipos/presentation/screens/home/widgets/home_body.dart';
 
+import '../../../../core/util/extensions/context_extension.dart';
 import '../../../components/dialogs/confirmation_dialog.dart';
 import '../bloc/home_bloc.dart';
+import 'home_body.dart';
 
 class HomeContent extends StatelessWidget {
   const HomeContent({super.key});
@@ -13,18 +13,18 @@ class HomeContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home'),
+        title: const Text('Home'),
         actions: [
           IconButton(
             onPressed: () => _showDialogConfirmacaoLogout(context),
-            icon: Icon(Icons.logout),
+            icon: const Icon(Icons.logout),
           ),
         ],
       ),
       body: BlocConsumer<HomeBloc, HomeState>(
         listener: _listener,
         builder: (context, state) {
-          return HomeBody();
+          return const HomeBody();
         },
       ),
     );
@@ -38,7 +38,7 @@ class HomeContent extends StatelessWidget {
     showDialog(
       context: context,
       builder: (_) {
-        return ConfirmationDialog(
+        return const ConfirmationDialog(
           title: 'Logout',
           content: 'Tem certeza que deseja sair do aplicativo?',
         );
