@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../components/blank_content.dart';
 import '../bloc/players_bloc.dart';
 import 'players_body.dart';
-import 'players_empty_list.dart';
 import 'players_fab.dart';
 
 class PlayersContent extends StatelessWidget {
@@ -20,7 +20,11 @@ class PlayersContent extends StatelessWidget {
           }
 
           if (state is PlayersLoadedEmpty) {
-            return const PlayersEmptyList();
+            return BlankContent(
+              message:
+                  'Nenhum jogador cadastrado, adicione um jogador agora mesmo!',
+              onRefreshed: () => _onRefreshed(context),
+            );
           }
 
           if (state is PlayersLoadFail) {
@@ -32,5 +36,9 @@ class PlayersContent extends StatelessWidget {
       ),
       floatingActionButton: const PlayersFab(),
     );
+  }
+
+  void _onRefreshed(BuildContext context) {
+    context.read<PlayersBloc>().add(const PlayersLoad());
   }
 }
