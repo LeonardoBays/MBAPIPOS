@@ -1,7 +1,9 @@
 part of 'players_bloc.dart';
 
 sealed class PlayersState extends Equatable {
-  const PlayersState();
+  const PlayersState({this.players = const []});
+
+  final List<Player> players;
 }
 
 final class PlayersInitial extends PlayersState {
@@ -19,10 +21,10 @@ final class PlayersLoading extends PlayersState {
 }
 
 final class PlayersLoaded extends PlayersState {
-  const PlayersLoaded();
+  const PlayersLoaded({required super.players});
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [players];
 }
 
 final class PlayersLoadFail extends PlayersState {

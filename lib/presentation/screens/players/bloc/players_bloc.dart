@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
+import '../../../../data/models/player.dart';
 import '../../../../domain/repositories/remote/supa_repository.dart';
 
 part 'players_event.dart';
@@ -20,6 +21,8 @@ class PlayersBloc extends Bloc<PlayersEvent, PlayersState> {
     Emitter<PlayersState> emit,
   ) async {
     try {
+      emit(const PlayersLoading());
+
       final user = _supaRepository.getUser();
 
       if (user == null) {
@@ -39,7 +42,11 @@ class PlayersBloc extends Bloc<PlayersEvent, PlayersState> {
       //   name: "Dida",
       // );
 
-      emit(const PlayersLoaded());
+      if (players.isNotEmpty) {
+        emit(PlayersLoaded(players: players));
+      } else {
+        emit(const PlayersLoadedEmpty());
+      }
     } catch (e) {
       emit(
         PlayersLoadFail(

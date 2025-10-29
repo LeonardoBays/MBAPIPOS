@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/players_bloc.dart';
 import 'players_body.dart';
+import 'players_empty_list.dart';
+import 'players_fab.dart';
 
 class PlayersContent extends StatelessWidget {
   const PlayersContent({super.key});
@@ -17,6 +19,10 @@ class PlayersContent extends StatelessWidget {
             return PlayersBody(state: state);
           }
 
+          if (state is PlayersLoadedEmpty) {
+            return const PlayersEmptyList();
+          }
+
           if (state is PlayersLoadFail) {
             return Center(child: Text(state.message));
           }
@@ -24,6 +30,7 @@ class PlayersContent extends StatelessWidget {
           return const Center(child: CircularProgressIndicator());
         },
       ),
+      floatingActionButton: const PlayersFab(),
     );
   }
 }

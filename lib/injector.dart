@@ -10,6 +10,7 @@ import 'external/plugins/supa_impl.dart';
 import 'presentation/screens/authentication/bloc/authentication_bloc.dart';
 import 'presentation/screens/home/bloc/home_bloc.dart';
 import 'presentation/screens/login/bloc/login_bloc.dart';
+import 'presentation/screens/manager_player/bloc/manager_player_bloc.dart';
 import 'presentation/screens/players/bloc/players_bloc.dart';
 import 'presentation/screens/register/bloc/register_bloc.dart';
 
@@ -62,6 +63,10 @@ final class InjectorImpl extends Injector {
 
     getIt.registerFactory<PlayersBloc>(
       () => PlayersBloc(getIt.get<SupaRepository>()),
+    );
+
+    getIt.registerFactory<ManagerPlayerBloc>(
+      () => ManagerPlayerBloc(getIt.get<SupaRepository>()),
     );
 
     return InjectorImpl._(getIt);
