@@ -29,18 +29,7 @@ class PlayersBloc extends Bloc<PlayersEvent, PlayersState> {
         throw "Usuario nao encontrado.";
       }
 
-      // await _supaRepository.insertPlayer(
-      //   createdBy: user.id,
-      //   name: "Leonardo Bays",
-      // );
-
       final players = await _supaRepository.loadPlayers(user.id);
-
-      // await _supaRepository.deletePlayer(id: players.first.id!);
-      // await _supaRepository.updatePlayer(
-      //   id: players.first.id!,
-      //   name: "Dida",
-      // );
 
       if (players.isNotEmpty) {
         emit(PlayersLoaded(players: players));

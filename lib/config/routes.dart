@@ -8,10 +8,14 @@ import '../presentation/screens/home/bloc/home_bloc.dart';
 import '../presentation/screens/login/bloc/login_bloc.dart';
 import '../presentation/screens/manager_player/bloc/manager_player_bloc.dart';
 import '../presentation/screens/manager_player/manager_player_screen.dart';
+import '../presentation/screens/matches/bloc/matches_bloc.dart';
+import '../presentation/screens/matches/matches_screen.dart';
 import '../presentation/screens/players/bloc/players_bloc.dart';
 import '../presentation/screens/players/players_screen.dart';
 import '../presentation/screens/register/bloc/register_bloc.dart';
 import '../presentation/screens/register/register_screen.dart';
+import '../presentation/screens/score/bloc/score_bloc.dart';
+import '../presentation/screens/score/score_screen.dart';
 
 enum NavigationFlow { simple, modalBottomUp }
 
@@ -22,6 +26,7 @@ enum AppRoutes {
   managerPlayer('/manager_player', NavigationFlow.simple),
   matches('/matches', NavigationFlow.simple),
   managerMatch('/manager_match', NavigationFlow.simple),
+  score('/score', NavigationFlow.simple),
   ranking('/hiscores', NavigationFlow.simple);
 
   final String route;
@@ -57,14 +62,18 @@ class Routes {
         managerPlayerBloc: injector.getIt.get<ManagerPlayerBloc>(),
         id: settings.arguments as String?,
       ),
-      AppRoutes.matches => PlayersScreen(
-        playersBloc: injector.getIt.get<PlayersBloc>(),
+      AppRoutes.matches => MatchesScreen(
+        matchesBloc: injector.getIt.get<MatchesBloc>(),
       ),
       AppRoutes.managerMatch => PlayersScreen(
         playersBloc: injector.getIt.get<PlayersBloc>(),
       ),
       AppRoutes.ranking => PlayersScreen(
         playersBloc: injector.getIt.get<PlayersBloc>(),
+      ),
+      AppRoutes.score => ScoreScreen(
+        scoreBloc: injector.getIt.get<ScoreBloc>(),
+        id: settings.arguments as String,
       ),
     };
 

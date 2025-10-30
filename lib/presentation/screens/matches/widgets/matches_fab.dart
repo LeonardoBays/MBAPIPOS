@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../config/routes.dart';
-import '../bloc/players_bloc.dart';
+import '../bloc/matches_bloc.dart';
 
-class PlayersFab extends StatelessWidget {
-  const PlayersFab({super.key});
+class MatchesFab extends StatelessWidget {
+  const MatchesFab({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<PlayersBloc, PlayersState>(
+    return BlocBuilder<MatchesBloc, MatchesState>(
       builder: (context, state) {
-        if (state is PlayersLoading || state is PlayersInitial) {
+        if (state is MatchesLoading || state is MatchesInitial) {
           return const SizedBox();
         }
 
@@ -34,7 +34,7 @@ class PlayersFab extends StatelessWidget {
     ) {
       if (value == true) {
         if (context.mounted) {
-          context.read<PlayersBloc>().add(const PlayersLoad());
+          context.read<MatchesBloc>().add(const MatchesLoad());
         }
       }
     });

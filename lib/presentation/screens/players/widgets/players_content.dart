@@ -27,8 +27,12 @@ class PlayersContent extends StatelessWidget {
             );
           }
 
+          /// Testar isso aqui, esqueci de validar
           if (state is PlayersLoadFail) {
-            return Center(child: Text(state.message));
+            return BlankContent(
+              message: state.message,
+              onRefreshed: () => _onRefreshed(context),
+            );
           }
 
           return const Center(child: CircularProgressIndicator());

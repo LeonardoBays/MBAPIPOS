@@ -36,6 +36,7 @@ class PlayersCard extends StatelessWidget {
   }
 
   void _onPressed(BuildContext context) {
+    ScaffoldMessenger.of(context).clearSnackBars();
     Navigator.of(context)
         .pushNamed(AppRoutes.managerPlayer.route, arguments: player.id)
         .then((value) {

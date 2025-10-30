@@ -26,6 +26,7 @@ class ManagerPlayerContent extends StatelessWidget {
             return ManagerPlayerBody(state: state);
           }
 
+          /// Testar isso aqui, esqueci de validar
           if (state is ManagerPlayerLoadFail) {
             return Center(child: Text(state.message));
           }
