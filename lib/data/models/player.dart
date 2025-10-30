@@ -1,14 +1,14 @@
 import 'package:equatable/equatable.dart';
 
 class Player extends Equatable {
-  final String? id;
+  final String id;
   final String name;
   final String createdBy;
   final DateTime createdAt;
   final DateTime? deletedAt;
 
   const Player({
-    this.id,
+    required this.id,
     required this.name,
     required this.createdBy,
     required this.createdAt,

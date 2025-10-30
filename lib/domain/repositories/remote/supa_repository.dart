@@ -21,4 +21,6 @@ abstract class SupaRepository {
   Future<void> deletePlayer({required String id});
 
   Future<void> updatePlayer({required String name, required String id});
+
+  Future<Player?> loadPlayerById(String id);
 }

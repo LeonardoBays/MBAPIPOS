@@ -29,10 +29,6 @@ class PlayersCard extends StatelessWidget {
                 ),
               ),
             ),
-            IconButton(
-              onPressed: () => _onDeletedPressed(context),
-              icon: const Icon(Icons.delete),
-            ),
           ],
         ),
       ),
@@ -49,11 +45,5 @@ class PlayersCard extends StatelessWidget {
             }
           }
         });
-  }
-
-  void _onDeletedPressed(BuildContext context) {
-    // showDialog(context: context, builder: (context) {
-    //
-    // },);
   }
 }

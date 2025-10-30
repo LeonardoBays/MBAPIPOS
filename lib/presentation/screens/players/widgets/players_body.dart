@@ -14,7 +14,7 @@ class PlayersBody extends StatelessWidget {
     return RefreshIndicator(
       onRefresh: () async => _onRefreshed(context),
       child: ListView.separated(
-        padding: const EdgeInsets.only(bottom: 96.0),
+        padding: const EdgeInsets.only(bottom: 96.0, top: 12.0),
         itemBuilder: (context, index) {
           final player = state.players[index];
 

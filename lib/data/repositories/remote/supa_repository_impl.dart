@@ -66,4 +66,11 @@ class SupaRepositoryImpl extends SupaDataSource implements SupaRepository {
   Future<void> updatePlayer({required String name, required String id}) async {
     await client.from('players').update({'name': name}).eq('id', id);
   }
+
+  @override
+  Future<Player?> loadPlayerById(String id) async {
+    final player = await client.from('players').select().eq('id', id).single();
+
+    return Player.fromMap(player);
+  }
 }
