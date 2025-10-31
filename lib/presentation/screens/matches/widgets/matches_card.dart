@@ -32,10 +32,11 @@ class MatchesCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () => _onPressed(context),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12.0),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(8.0),
+        onTap: () => _onPressed(context),
         child: Container(
           padding: const EdgeInsets.all(8.0),
           decoration: BoxDecoration(
@@ -76,6 +77,7 @@ class MatchesCard extends StatelessWidget {
   }
 
   void _onPressed(BuildContext context) {
+    ScaffoldMessenger.of(context).clearSnackBars();
     switch (match.status) {
       case MatchStatus.onGoing:
         _openScore(context);
@@ -87,7 +89,6 @@ class MatchesCard extends StatelessWidget {
   }
 
   void _openMatchScreen(BuildContext context) {
-    ScaffoldMessenger.of(context).clearSnackBars();
     Navigator.of(context)
         .pushNamed(AppRoutes.managerMatch.route, arguments: match.id)
         .then((value) {
@@ -100,7 +101,6 @@ class MatchesCard extends StatelessWidget {
   }
 
   void _openScore(BuildContext context) {
-    ScaffoldMessenger.of(context).clearSnackBars();
     Navigator.of(
       context,
     ).pushNamed(AppRoutes.score.route, arguments: match.id).then((value) {

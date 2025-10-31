@@ -134,11 +134,11 @@ class SupaRepositoryImpl extends SupaDataSource implements SupaRepository {
 
   @override
   Future<void> updateMatchHomeScore(String id, int score) async {
-    client.from('match').update({'home_score': score}).eq('id', id);
+    await client.from('match').update({'home_score': score}).eq('id', id);
   }
 
   @override
   Future<void> updateMatchAwayScore(String id, int score) async {
-    client.from('match').update({'away_score': score}).eq('id', id);
+    await client.from('match').update({'away_score': score}).eq('id', id);
   }
 }
