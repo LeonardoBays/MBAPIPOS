@@ -155,7 +155,7 @@ class ManagerPlayerBloc extends Bloc<ManagerPlayerEvent, ManagerPlayerState> {
         return;
       }
 
-      final String? id = state.id;
+      final String? id = state.player?.id;
 
       if (id == null) {
         await _supaRepository.insertPlayer(name: name, createdBy: user.id);

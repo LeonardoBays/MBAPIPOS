@@ -1,5 +1,6 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import '../../../core/constants/enum/match_team.dart';
 import '../../../data/models/match.dart';
 import '../../../data/models/player.dart';
 
@@ -51,4 +52,6 @@ abstract class SupaRepository {
   Future<void> updateMatchHomeScore(String id, int score);
 
   Future<void> updateMatchAwayScore(String id, int score);
+
+  Future<List<Player>> loadPlayersByMatch(String id, MatchTeam matchTeam);
 }

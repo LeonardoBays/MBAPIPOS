@@ -6,6 +6,8 @@ import '../presentation/screens/authentication/authentication_screen.dart';
 import '../presentation/screens/authentication/bloc/authentication_bloc.dart';
 import '../presentation/screens/home/bloc/home_bloc.dart';
 import '../presentation/screens/login/bloc/login_bloc.dart';
+import '../presentation/screens/manager_match/bloc/manager_match_bloc.dart';
+import '../presentation/screens/manager_match/manager_match_screen.dart';
 import '../presentation/screens/manager_player/bloc/manager_player_bloc.dart';
 import '../presentation/screens/manager_player/manager_player_screen.dart';
 import '../presentation/screens/matches/bloc/matches_bloc.dart';
@@ -58,8 +60,8 @@ class Routes {
       AppRoutes.players => PlayersScreen(
         playersBloc: injector.getIt.get<PlayersBloc>(),
       ),
-      AppRoutes.managerPlayer => ManagerPlayerScreen(
-        managerPlayerBloc: injector.getIt.get<ManagerPlayerBloc>(),
+      AppRoutes.managerPlayer => ManagerMatchScreen(
+        managerMatchBloc: injector.getIt.get<ManagerMatchBloc>(),
         id: settings.arguments as String?,
       ),
       AppRoutes.matches => MatchesScreen(

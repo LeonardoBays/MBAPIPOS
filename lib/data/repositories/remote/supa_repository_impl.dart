@@ -1,5 +1,6 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import '../../../core/constants/enum/match_team.dart';
 import '../../../core/resources/supa_data_source.dart';
 import '../../../domain/repositories/remote/supa_repository.dart';
 import '../../models/match.dart';
@@ -140,5 +141,19 @@ class SupaRepositoryImpl extends SupaDataSource implements SupaRepository {
   @override
   Future<void> updateMatchAwayScore(String id, int score) async {
     await client.from('match').update({'away_score': score}).eq('id', id);
+  }
+
+  @override
+  Future<List<Player>> loadPlayersByMatch(
+    String id,
+    MatchTeam matchTeam,
+  ) async {
+    final players = await client
+        .from('match_player')
+        .select('player (*)')
+        .eq('match_id', id)
+        .eq('team_played', matchTeam.value);
+
+    return players.map<Player>((e) => Player.fromMap(e)).toList();
   }
 }
