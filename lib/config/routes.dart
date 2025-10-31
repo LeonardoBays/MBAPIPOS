@@ -60,15 +60,16 @@ class Routes {
       AppRoutes.players => PlayersScreen(
         playersBloc: injector.getIt.get<PlayersBloc>(),
       ),
-      AppRoutes.managerPlayer => ManagerMatchScreen(
-        managerMatchBloc: injector.getIt.get<ManagerMatchBloc>(),
+      AppRoutes.managerPlayer => ManagerPlayerScreen(
+        managerPlayerBloc: injector.getIt.get<ManagerPlayerBloc>(),
         id: settings.arguments as String?,
       ),
       AppRoutes.matches => MatchesScreen(
         matchesBloc: injector.getIt.get<MatchesBloc>(),
       ),
-      AppRoutes.managerMatch => PlayersScreen(
-        playersBloc: injector.getIt.get<PlayersBloc>(),
+      AppRoutes.managerMatch => ManagerMatchScreen(
+        managerMatchBloc: injector.getIt.get<ManagerMatchBloc>(),
+        id: settings.arguments as String?,
       ),
       AppRoutes.ranking => PlayersScreen(
         playersBloc: injector.getIt.get<PlayersBloc>(),

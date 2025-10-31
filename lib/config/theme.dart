@@ -135,6 +135,14 @@ ThemeData theme() {
         borderRadius: BorderRadius.circular(8.0),
         borderSide: BorderSide(color: colorScheme.primary, width: 2.0),
       ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8.0),
+        borderSide: BorderSide.none,
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8.0),
+        borderSide: BorderSide.none,
+      ),
       hintStyle: textTheme.bodyMedium?.copyWith(
         color: colorScheme.onSurface.withValues(alpha: 0.5),
       ),

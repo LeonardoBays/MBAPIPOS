@@ -33,6 +33,6 @@ class ManagerMatchBtn extends StatelessWidget {
       return;
     }
 
-    context.read<ManagerMatchBloc>().add(const ManagerMatchSave());
+    // context.read<ManagerMatchBloc>().add(const ManagerMatchSave());
   }
 }

@@ -4,6 +4,7 @@ class Input extends StatelessWidget {
   const Input({
     super.key,
     this.error,
+    this.initialValue,
     required this.label,
     required this.hint,
     required this.isEnabled,
@@ -19,6 +20,7 @@ class Input extends StatelessWidget {
   final String label;
   final String hint;
   final String? error;
+  final String? initialValue;
   final bool isEnabled;
   final bool isVisible;
   final FocusNode focus;
@@ -32,6 +34,7 @@ class Input extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       onChanged: onChanged,
+      initialValue: initialValue,
       enabled: isEnabled,
       keyboardType: textInputType,
       focusNode: focus,
@@ -45,12 +48,12 @@ class Input extends StatelessWidget {
         hintText: hint,
         hintStyle: const TextStyle(fontSize: 14.0, color: Colors.grey),
         suffixIcon: suffixIcon,
-        enabledBorder: const UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.grey, width: 1.0),
-        ),
-        focusedBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.grey.shade300, width: 1.5),
-        ),
+        // enabledBorder: const UnderlineInputBorder(
+        //   borderSide: BorderSide(color: Colors.grey, width: 1.0),
+        // ),
+        // focusedBorder: UnderlineInputBorder(
+        //   borderSide: BorderSide(color: Colors.grey.shade300, width: 1.5),
+        // ),
         errorText: error,
         errorStyle: const TextStyle(height: 1, fontSize: 12),
       ),

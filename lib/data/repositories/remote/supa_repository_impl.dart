@@ -152,7 +152,8 @@ class SupaRepositoryImpl extends SupaDataSource implements SupaRepository {
         .from('match_player')
         .select('player (*)')
         .eq('match_id', id)
-        .eq('team_played', matchTeam.value);
+        .eq('team_played', matchTeam.value)
+        .isFilter('player.deleted_at', null);
 
     return players.map<Player>((e) => Player.fromMap(e)).toList();
   }

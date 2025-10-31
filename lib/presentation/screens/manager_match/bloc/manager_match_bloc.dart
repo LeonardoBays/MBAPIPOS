@@ -59,8 +59,10 @@ class ManagerMatchBloc extends Bloc<ManagerMatchEvent, ManagerMatchState> {
         ManagerMatchLoaded(
           id: event.id,
           match: match,
-          homeName: match?.homeTeamName ?? '',
-          awayName: match?.awayTeamName ?? '',
+          homeName: "Local",
+          // homeName: match?.homeTeamName ?? '',
+          // awayName: match?.awayTeamName ?? '',
+          awayName: "Visitante",
           homeNameError: null,
           awayNameError: null,
           startAt: match?.startAt,
