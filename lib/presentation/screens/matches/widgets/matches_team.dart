@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
 class MatchesTeam extends StatelessWidget {
-  const MatchesTeam({super.key, required this.label, this.textAlign = TextAlign.start});
+  const MatchesTeam({
+    super.key,
+    required this.label,
+    this.textAlign = TextAlign.start,
+  });
 
   final String label;
   final TextAlign textAlign;

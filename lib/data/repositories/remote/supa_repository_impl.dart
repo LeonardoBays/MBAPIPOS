@@ -84,20 +84,28 @@ class SupaRepositoryImpl extends SupaDataSource implements SupaRepository {
   }
 
   @override
-  Future<void> insertMatch({
+  Future<String> insertMatch({
     required DateTime startAt,
     required DateTime endAt,
     required String homeTeamName,
     required String awayTeamName,
     required String createdBy,
   }) async {
-    await client.from('match').insert({
+    final Map<String, dynamic> insertValues = {
       'start_at': startAt.toIso8601String().replaceAll('T', ' '),
       'end_at': endAt.toIso8601String().replaceAll('T', ' '),
       'home_team_name': homeTeamName,
       'away_team_name': awayTeamName,
       'created_by': createdBy,
-    });
+    };
+
+    final response = await client
+        .from('match')
+        .insert(insertValues)
+        .select('id')
+        .single();
+
+    return response['id'];
   }
 
   @override
@@ -112,7 +120,6 @@ class SupaRepositoryImpl extends SupaDataSource implements SupaRepository {
     required DateTime endAt,
     required String homeTeamName,
     required String awayTeamName,
-    required String createdBy,
   }) async {
     await client
         .from('match')
@@ -121,7 +128,6 @@ class SupaRepositoryImpl extends SupaDataSource implements SupaRepository {
           'end_at': endAt.toIso8601String().replaceAll('T', ' '),
           'home_team_name': homeTeamName,
           'away_team_name': awayTeamName,
-          'created_by': createdBy,
         })
         .eq('id', id);
   }
@@ -149,12 +155,28 @@ class SupaRepositoryImpl extends SupaDataSource implements SupaRepository {
     MatchTeam matchTeam,
   ) async {
     final players = await client
-        .from('match_player')
-        .select('player (*)')
+        .from('match_players')
+        .select('players (*)')
         .eq('match_id', id)
         .eq('team_played', matchTeam.value)
-        .isFilter('player.deleted_at', null);
+        .isFilter('players.deleted_at', null);
 
     return players.map<Player>((e) => Player.fromMap(e)).toList();
+  }
+
+  @override
+  Future<void> savePlayersMatch({
+    required String matchId,
+    required List<String> playersId,
+    required MatchTeam matchTeam,
+  }) async {
+    await client.rpc(
+      'atualiza_match_players',
+      params: {
+        'match_id': matchId,
+        'team_played': matchTeam.value,
+        'players_id': playersId,
+      },
+    );
   }
 }

@@ -205,7 +205,7 @@ class ManagerPlayerBloc extends Bloc<ManagerPlayerEvent, ManagerPlayerState> {
         ),
       );
 
-      final String? id = state.id;
+      final String? id = state.player?.id;
 
       if (id != null) {
         await _supaRepository.deletePlayer(id: id);
@@ -216,7 +216,7 @@ class ManagerPlayerBloc extends Bloc<ManagerPlayerEvent, ManagerPlayerState> {
             name: state.name,
             player: state.player,
             nameError: state.nameError,
-            message: 'Jogador removido com sucesso',
+            message: 'Jogador removido com sucesso!',
           ),
         );
       } else {

@@ -16,7 +16,7 @@ class MatchesBody extends StatelessWidget {
       child: RefreshIndicator(
         onRefresh: () async => _onRefreshed(context),
         child: ListView.separated(
-          padding: const EdgeInsets.only(top: 12.0),
+          padding: const EdgeInsets.only(bottom: 96.0, top: 12.0),
           physics: const ClampingScrollPhysics(
             parent: AlwaysScrollableScrollPhysics(),
           ),

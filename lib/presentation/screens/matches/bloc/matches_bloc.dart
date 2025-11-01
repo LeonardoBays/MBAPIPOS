@@ -35,8 +35,8 @@ class MatchesBloc extends Bloc<MatchesEvent, MatchesState> {
       // await _supaRepository.insertMatch(
       //   startAt: DateTime.now().add(const Duration(minutes: 3)),
       //   endAt: DateTime.now().add(const Duration(minutes: 10 + 90)),
-      //   homeTeamName: 'Time da casa',
-      //   awayTeamName: 'Time visitante',
+      //   homeTeamName: 'Luffy',
+      //   awayTeamName: 'Ace',
       //   createdBy: user.id,
       // );
 

@@ -29,12 +29,12 @@ class _ManagerInputsState extends State<ManagerInputs> {
   late final FocusNode _homeNameFocus;
   late final FocusNode _awayNameFocus;
 
-  late final bool _isEnable;
+  late bool _isEnable;
 
   late final String _homeTeamName;
   late final String _awayTeamName;
-  late final String? _homeTeamNameError;
-  late final String? _awayTeamNameError;
+  late String? _homeTeamNameError;
+  late String? _awayTeamNameError;
 
   @override
   void initState() {

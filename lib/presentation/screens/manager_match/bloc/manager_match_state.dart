@@ -8,6 +8,7 @@ sealed class ManagerMatchState extends Equatable {
     this.awayName = '',
     this.homeNameError,
     this.awayNameError,
+    this.dateError,
     this.startAt,
     this.endAt,
     this.players = const [],
@@ -22,6 +23,7 @@ sealed class ManagerMatchState extends Equatable {
 
   final String? homeNameError;
   final String? awayNameError;
+  final String? dateError;
 
   final DateTime? startAt;
   final DateTime? endAt;
@@ -57,6 +59,7 @@ final class ManagerMatchLoaded extends ManagerMatchState {
     required super.awayName,
     required super.homeNameError,
     required super.awayNameError,
+    required super.dateError,
     required super.startAt,
     required super.endAt,
     required super.players,
@@ -72,6 +75,7 @@ final class ManagerMatchLoaded extends ManagerMatchState {
     awayName,
     homeNameError,
     awayNameError,
+    dateError,
     startAt,
     endAt,
     players,
@@ -89,6 +93,7 @@ final class ManagerMatchLoadFail extends ManagerMatchState {
     required super.awayName,
     required super.homeNameError,
     required super.awayNameError,
+    required super.dateError,
     required super.startAt,
     required super.endAt,
     required super.players,
@@ -107,6 +112,7 @@ final class ManagerMatchLoadFail extends ManagerMatchState {
     awayName,
     homeNameError,
     awayNameError,
+    dateError,
     startAt,
     endAt,
     players,
@@ -123,6 +129,7 @@ final class ManagerMatchSaving extends ManagerMatchState {
     required super.awayName,
     required super.homeNameError,
     required super.awayNameError,
+    required super.dateError,
     required super.startAt,
     required super.endAt,
     required super.players,
@@ -138,6 +145,7 @@ final class ManagerMatchSaving extends ManagerMatchState {
     awayName,
     homeNameError,
     awayNameError,
+    dateError,
     startAt,
     endAt,
     players,
@@ -155,6 +163,7 @@ final class ManagerMatchWarning extends ManagerMatchState {
     required super.awayName,
     required super.homeNameError,
     required super.awayNameError,
+    required super.dateError,
     required super.startAt,
     required super.endAt,
     required super.players,
@@ -173,6 +182,7 @@ final class ManagerMatchWarning extends ManagerMatchState {
     awayName,
     homeNameError,
     awayNameError,
+    dateError,
     startAt,
     endAt,
     players,
@@ -190,6 +200,7 @@ final class ManagerMatchSuccess extends ManagerMatchState {
     required super.awayName,
     required super.homeNameError,
     required super.awayNameError,
+    required super.dateError,
     required super.startAt,
     required super.endAt,
     required super.players,
@@ -208,6 +219,7 @@ final class ManagerMatchSuccess extends ManagerMatchState {
     awayName,
     homeNameError,
     awayNameError,
+    dateError,
     startAt,
     endAt,
     players,

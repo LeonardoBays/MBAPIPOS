@@ -29,11 +29,9 @@ class MatchesFab extends StatelessWidget {
 
   void _onPressed(BuildContext context) {
     ScaffoldMessenger.of(context).clearSnackBars();
-    Navigator.of(context).pushNamed(AppRoutes.managerMatch.route).then((
-      value,
-    ) {
-      if (value == true) {
-        if (context.mounted) {
+    Navigator.of(context).pushNamed(AppRoutes.managerMatch.route).then((value) {
+      if (context.mounted) {
+        if (value == true) {
           context.read<MatchesBloc>().add(const MatchesLoad());
         }
       }

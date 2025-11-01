@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../components/input.dart';
 import '../../manager_player/widgets/manager_player_btn.dart';
 import '../bloc/manager_match_bloc.dart';
 import 'manager_inputs.dart';

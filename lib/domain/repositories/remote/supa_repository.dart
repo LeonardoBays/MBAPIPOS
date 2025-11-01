@@ -28,7 +28,7 @@ abstract class SupaRepository {
 
   Future<List<Match>> loadMatches(String id);
 
-  Future<void> insertMatch({
+  Future<String> insertMatch({
     required DateTime startAt,
     required DateTime endAt,
     required String homeTeamName,
@@ -44,7 +44,6 @@ abstract class SupaRepository {
     required DateTime endAt,
     required String homeTeamName,
     required String awayTeamName,
-    required String createdBy,
   });
 
   Future<Match?> loadMatchById(String id);
@@ -54,4 +53,10 @@ abstract class SupaRepository {
   Future<void> updateMatchAwayScore(String id, int score);
 
   Future<List<Player>> loadPlayersByMatch(String id, MatchTeam matchTeam);
+
+  Future<void> savePlayersMatch({
+    required String matchId,
+    required List<String> playersId,
+    required MatchTeam matchTeam,
+  });
 }

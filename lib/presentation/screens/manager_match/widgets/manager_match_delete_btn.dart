@@ -34,8 +34,8 @@ class ManagerMatchDeleteBtn extends StatelessWidget {
       context: context,
       builder: (_) {
         return const ConfirmationDialog(
-          title: 'Remover jogador',
-          content: 'Tem certeza que deseja remover o jogador?',
+          title: 'Remover partida',
+          content: 'Tem certeza que deseja remover a partida?',
         );
       },
     ).then((value) {
